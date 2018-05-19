@@ -4,6 +4,7 @@ Code from DZone on Converting Java Maps to Lists
 Many thanks to John Thompson, Spring Framework Guru
 https://springframework.guru
 
+See DZone article:
 https://dzone.com/articles/converting-java-maps-to-lists
 
 **Note**:
