@@ -3,6 +3,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+
+/***************************************************************
+ *
+ * Converting Java Maps to Lists by  John Thompson
+ *
+ * Converting a Java Map to a List is a very common task.
+ * Map and List are common data structures used in Java.
+ * A Map is a collection of key value pairs.
+ * While a List is an ordered collection of objects in which
+ * duplicate values can be stored.
+ *
+ *https://dzone.com/articles/converting-java-maps-to-lists?utm_source=Top%205&utm_medium=email&utm_campaign=Top%205%202018-05-183
+ *
+ */
+
 public class MapToListConverter {
 
 
