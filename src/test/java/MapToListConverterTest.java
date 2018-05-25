@@ -80,6 +80,39 @@ public class MapToListConverterTest {
     }
 
 
+    @Test
+    public void convertMapValuesToListWithStream(){
+        List<String> convertedListOfValues = mapToListConverter.convertMapValuesToListWithStream(countryDialCodeMap);
+        assertThat(convertedListOfValues, not(IsEmptyCollection.empty()));
+        assertThat(convertedListOfValues, hasSize(5));
+        assertThat(convertedListOfValues, containsInAnyOrder("United States", "United Kingdom", "Brazil", "South Africa", "France"));
+        printList(convertedListOfValues);
+    }
+
+
+    @Test
+    public void convertGenericMapKeysToListWithStreamLambda(){
+        List<Integer> convertedListOfKeys = mapToListConverter.convertGenericMapKeysToListWithStreamLambda(countryDialCodeMap);
+        assertThat(convertedListOfKeys, not(IsEmptyCollection.empty()));
+        assertThat(convertedListOfKeys, hasSize(5));
+        assertThat(convertedListOfKeys, hasItems(33,27));
+        assertThat(convertedListOfKeys, containsInAnyOrder(1,33,44,27,55));
+        printList(convertedListOfKeys);
+    }
+
+
+
+    @Test
+    public void convertGenericMapKeysToListWithStreamMethodReference(){
+        List<String> convertedListOfValues = mapToListConverter.convertGenericMapValuesToListWithStreamMethodReference(countryDialCodeMap);
+        assertThat(convertedListOfValues, not(IsEmptyCollection.empty()));
+        assertThat(convertedListOfValues, hasSize(5));
+        assertThat(convertedListOfValues, hasItems("United States","France"));
+        assertThat(convertedListOfValues, containsInAnyOrder("United States", "United Kingdom", "Brazil", "South Africa", "France"));
+        printList(convertedListOfValues);
+    }
+
+
     private void printList(List list){
         list.stream().forEach(System.out::println);
     }
