@@ -29,6 +29,7 @@ public class MapToListConverter {
      * @return
      */
     public List<Integer> convertMapKeysToList(Map<Integer,String> map){
+        System.out.println("convertMapKeysToList()");
         List<Integer> listOfKeys = new ArrayList(map.keySet());
         return listOfKeys;
 
@@ -43,6 +44,7 @@ public class MapToListConverter {
      * @return
      */
     public List<String> convertMapValuesToList(Map<Integer,String> map){
+        System.out.println("convertMapValuesToList()");
         List<String> listOfValues = new ArrayList(map.values());
         return listOfValues;
     }
@@ -59,8 +61,69 @@ public class MapToListConverter {
      * @return
      */
     public List<Integer> convertMapKeysToListWithStream(Map<Integer,String> map){
+        System.out.println("convertMapKeysToListWithStream()");
         List<Integer> listOfKeys = map.keySet().stream().collect(Collectors.toList());
         return listOfKeys;
-
     }
+
+
+    /*************************
+     *
+     * Converting Map values to a List using streams is similar. You only need to
+     * get the stream of Map values that map.values() return.
+     *
+     * @param map
+     * @return
+     */
+    public List<String> convertMapValuesToListWithStream(Map<Integer,String> map){
+      //List<String> listOfValues = map.values().stream().collect(Collectors.toCollection(ArrayList::new));
+
+      //A shorter alternative to the line above
+        System.out.println("convertMapValuesToListWithStream()");
+        List<String> listOfValues = map.values().stream().collect(Collectors.toList());
+        return listOfValues;
+    }
+
+
+
+    /******************************
+     *
+     * For generic collections, you can use streams with lambda expressions,
+     * like in this class.
+     *
+     * @param map
+     * @param <K>
+     * @param <V>
+     * @return
+     */
+    public static<K, V> List<K> convertGenericMapKeysToListWithStreamLambda(Map<K,V> map){
+        System.out.println("convertGenericMapKeysToListWithStreamLambda()");
+        List<K> keyList = new ArrayList<>();
+        map.entrySet().stream().forEach( entry ->
+            {keyList.add(entry.getKey());
+            } );
+        return keyList;
+    }
+
+
+
+    /********************************************
+     *
+     * For generic collections, you also can use streams with method reference,
+     * like in this class.
+     * (method references preferred over lambda expressions because they are
+     * clear and concise.)
+     *
+     * @param map
+     * @param <K>
+     * @param <V>
+     * @return
+     */
+    public static<K, V> List<V> convertGenericMapValuesToListWithStreamMethodReference(Map<K,V> map){
+        System.out.println("convertGenericMapValuesToListWithStreamMethodReference( )");
+        List<V> keyList = new ArrayList<>();
+        map.values().stream().forEach(keyList::add);
+        return keyList;
+    }
+
 }
